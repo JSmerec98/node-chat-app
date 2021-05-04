@@ -15,17 +15,17 @@ pipeline {
     
     post {
         always {
-            echo "Finished!"
+            echo 'Finished!'
         }
         success {
-            echo 'Success!"
+            echo 'Success!'
         }
         failure {
             echo 'Failure!'
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
-                subject: "Build or test failed in Jenkins! :("
+                subject: 'Build or test failed in Jenkins! :('
         }
     }
 }
