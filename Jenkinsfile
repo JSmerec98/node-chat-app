@@ -50,14 +50,14 @@ pipeline {
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
-                subject: "Success in Jenkins! :)"
+                subject: "Test success in Jenkins! :)"
         }
         failure {
             echo 'Failure!'
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
-                subject: "Fail in Jenkins! :("
+                subject: "Test fail in Jenkins! :("
         }
     }
 }
