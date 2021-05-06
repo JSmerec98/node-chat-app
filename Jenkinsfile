@@ -1,5 +1,3 @@
-def skipRemainingStages = false
-
 pipeline {
 
     agent any
