@@ -1,7 +1,7 @@
 pipeline {
 
     agent any
-    	tools {nodejs "NodeJS"}
+    	tools{nodejs "NodeJS"}
 	
     stages {
         stage('Build') {
@@ -12,7 +12,7 @@ pipeline {
             
         post {
          always {
-            echo "Finished!"
+            echo 'Finished!'
          }
          success {
             echo 'Success!'
@@ -34,8 +34,8 @@ pipeline {
        
         stage('Test') {
             steps {
-                echo 'Testing!"
-		 sh 'npm install'
+                echo 'Testing!'
+		sh 'npm install'
                 sh 'npm run test'
             }
         }
@@ -43,7 +43,7 @@ pipeline {
     
     post {
         always {
-            echo "Finished!"
+            echo 'Finished!'
         }
         success {
             echo 'Success!'
