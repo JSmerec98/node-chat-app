@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building!'
-                sh 'npma install'
+                sh 'npm install'
         }
             
         post {
@@ -21,14 +21,14 @@ pipeline {
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
-                subject: "Build success in Jenkins! :)"
+                subject: "Build succeed in Jenkins! :)"
          }
          failure {
             echo 'Failure!'
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
-                subject: "Build fail in Jenkins! :("
+                subject: "Build failed in Jenkins! :("
         }
      }
         }
@@ -49,14 +49,14 @@ pipeline {
 		    emailext attachLog: true,
 			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
 			to: 'jasiek.smerecki@gmail.com',
-			subject: "Test success in Jenkins! :)"
+			subject: "Test succeed in Jenkins! :)"
 		}
 		failure {
 		    echo 'Failure!'
 		    emailext attachLog: true,
 			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
 			to: 'jasiek.smerecki@gmail.com',
-			subject: "Test fail in Jenkins! :("
+			subject: "Test failed in Jenkins! :("
 		}
     	}
       }
