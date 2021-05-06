@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building!'
                 sh 'npma install'
-            }
+        }
             
         post {
          always {
@@ -29,9 +29,8 @@ pipeline {
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
                 subject: "Build fail in Jenkins! :("
-          }
         }
-       
+     }
         }
        
         stage('Test') {
@@ -40,26 +39,26 @@ pipeline {
 		sh 'npm install'
                 sh 'npm run test'
             }
-        }
-    }
-    
-    post {
-        always {
-            echo 'Finished!'
-        }
-        success {
-            echo 'Success!'
-            emailext attachLog: true,
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
-                to: 'jasiek.smerecki@gmail.com',
-                subject: "Test success in Jenkins! :)"
-        }
-        failure {
-            echo 'Failure!'
-            emailext attachLog: true,
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
-                to: 'jasiek.smerecki@gmail.com',
-                subject: "Test fail in Jenkins! :("
-        }
+		
+	post {
+		always {
+		    echo 'Finished!'
+		}
+		success {
+		    echo 'Success!'
+		    emailext attachLog: true,
+			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+			to: 'jasiek.smerecki@gmail.com',
+			subject: "Test success in Jenkins! :)"
+		}
+		failure {
+		    echo 'Failure!'
+		    emailext attachLog: true,
+			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+			to: 'jasiek.smerecki@gmail.com',
+			subject: "Test fail in Jenkins! :("
+		}
+    	}
+      }
     }
 }
