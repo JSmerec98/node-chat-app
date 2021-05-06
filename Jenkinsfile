@@ -1,3 +1,5 @@
+def skipRemainingStages = false
+
 pipeline {
 
     agent any
@@ -7,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building!'
-                sh 'npm install'
+                sh 'npma install'
             }
             
         post {
