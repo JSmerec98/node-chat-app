@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building!!!'
-                sh 'npma install'
+                sh 'npm install'
         }
             
         post {
