@@ -27,9 +27,9 @@ pipeline {
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 to: 'jasiek.smerecki@gmail.com',
                 subject: "Build failed in Jenkins! :("
-        }
-     }
-        }
+         }
+     	 }
+       }
        
         stage('Test') {
             steps {
