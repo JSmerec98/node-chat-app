@@ -4,7 +4,6 @@
 	room: 'CSGO'
 }]
 
-
 class Users {
 	constructor() {
 		this.users = [];
