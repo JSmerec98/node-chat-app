@@ -16,7 +16,6 @@ class Users {
 		return user;
 	}
  
- 
 	removeUser(id) {
 		// return user that was removed
 		var user = this.getUser(id);
