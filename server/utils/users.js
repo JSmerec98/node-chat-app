@@ -59,7 +59,7 @@ module.exports = {
 // 		return `${this.name} is ${this.age} year(s) old`;
 // 	}
 // }
-
+//
 // var me = new Person('Binh', 27);
 // var description = me.getUserDescription();
 // console.log(description);
