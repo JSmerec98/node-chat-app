@@ -33,9 +33,9 @@ pipeline {
        
         stage('Test') {
             steps {
-                echo 'Testing!!!'
+		echo 'Testing!!!'
 		sh 'npm install'
-                sh 'npm run test'
+		sh 'npm run test'
             }
 		
 	post {
@@ -58,5 +58,28 @@ pipeline {
 		}
     	}
       }
+      
+      stage('Deploy') {
+            steps {
+                echo 'Deploying!!!'
+                sh 'docker build -t node-chat-deploy -f Dockerfile.deploy .'
+            }
+            post {
+		success {
+		    echo 'Success!'
+		    emailext attachLog: true,
+			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+			to: 'jasiek.smerecki@gmail.com',
+			subject: "Test succeed in Jenkins! :)"
+		}
+		failure {
+		    echo 'Failure!'
+		    emailext attachLog: true,
+			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+			to: 'jasiek.smerecki@gmail.com',
+			subject: "Test failed in Jenkins! :("
+		}
+            }
+        }
     }
 }
