@@ -28,7 +28,7 @@ pipeline {
                 to: 'jasiek.smerecki@gmail.com',
                 subject: "Build failed in Jenkins! :("
          }
-     	 }
+     	  } 
        }
        
         stage('Test') {
